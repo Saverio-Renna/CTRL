@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=3 uid="uid://bngsk3tnsie7e"]
+
+[ext_resource type="Script" uid="uid://dchd6r2yceiu" path="res://scenes/Intro/intro.gd" id="1_2xnbr"]
+
+[sub_resource type="Animation" id="Animation_gral6"]
+resource_name = "Intro"
+length = 24.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.03333, 4.03333, 5.01667, 7.06667, 8.03333, 9.03333, 11, 11.9667, 12.9667, 15, 15.9667, 16.9667, 19.0667, 20.0333, 21.0333, 23, 23.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.96667, 8.03333, 12, 16, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["A volte, il mondo fuori è tranquillo.
+Ma dentro… qualcosa si muove.", "Il respiro si accorcia.
+Il cuore accelera.
+Il pensiero si perde.", "Questo non è un mostro.  
+Non è un nemico visibile.  
+È qualcosa che nasce da dentro… e che spesso non si vede.", "Gli attacchi di panico sono reali.
+Sono intensi.
+E possono colpire chiunque", "Questo gioco vuole raccontare.  
+Vuole far sentire.  
+Vuole, forse, aiutare a capire.", "Non sei solo.
+Respira."]
+}
+
+[sub_resource type="Animation" id="Animation_w1iy7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["A volte, il mondo fuori è tranquillo.
+Ma dentro… qualcosa si muove."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37sh5"]
+_data = {
+&"Intro": SubResource("Animation_gral6"),
+&"RESET": SubResource("Animation_w1iy7")
+}
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xnbr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.5
+offset_top = -310.5
+offset_right = 226.5
+offset_bottom = 310.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "A volte, il mondo fuori è tranquillo.
+Ma dentro… qualcosa si muove."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_37sh5")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

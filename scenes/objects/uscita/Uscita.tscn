@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce8dhv05nikao"]
+
+[ext_resource type="Script" uid="uid://dy85cjeaiu3jv" path="res://scenes/objects/uscita/uscita.gd" id="1_inwue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdln5"]
+
+[node name="Uscita" type="Area2D"]
+script = ExtResource("1_inwue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fdln5")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xa7xiwqp1e4o"]
+
+[ext_resource type="Script" uid="uid://cppfj86sxgy5r" path="res://scenes/objects/armadio/armadio.gd" id="1_dpcnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chba4"]
+size = Vector2(69, 104)
+
+[node name="Armadio" type="Area2D"]
+script = ExtResource("1_dpcnk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_chba4")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdqt6s8wlcvam"]
+
+[ext_resource type="Script" uid="uid://gparre6n4rmm" path="res://ui/AnxietyEffects/anxiety_effects.gd" id="1_b4023"]
+[ext_resource type="Shader" uid="uid://dkmpuafqm2vod" path="res://ui/AnxietyEffects/AnxietyEffects.gdshader" id="2_u3n5p"]
+[ext_resource type="AudioStream" uid="uid://cdrlj4fklhbva" path="res://audio/effects/heartbeat_audio.mp3" id="3_y1uhy"]
+[ext_resource type="AudioStream" uid="uid://icwpnbqjtv2q" path="res://audio/effects/memories_of_winter.ogg" id="4_ow6fn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3n5p"]
+shader = ExtResource("2_u3n5p")
+shader_parameter/saturation = 1.0
+shader_parameter/vignette_strength = 0.0
+
+[node name="AnxietyEffects" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_b4023")
+
+[node name="ColorRect_Saturation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u3n5p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="HeartbeatAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y1uhy")
+parameters/looping = true
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="play_memories_of_winter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ow6fn")
+
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]

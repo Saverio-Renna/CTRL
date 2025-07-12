@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuecndkvsvx2u"]
+
+[ext_resource type="Script" uid="uid://dov4k7nut3tp1" path="res://ui/ChoiceBox/choice_box.gd" id="1_mhpki"]
+
+[node name="ChoiceBox" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mhpki")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 32.0
+grow_horizontal = 2
+
+[node name="Button 1" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button 2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button 3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2

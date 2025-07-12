@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://b814f5x76mbkq"]
+
+[ext_resource type="Script" uid="uid://btpabt52k52gq" path="res://Minigame/BreathingMinigame/breathing_minigame.gd" id="1_f87hx"]
+[ext_resource type="Texture2D" uid="uid://cuky5u6kvqo00" path="res://assets/Minigames/BreathingMinigame/New Piskel.png" id="2_f4t0g"]
+[ext_resource type="Script" uid="uid://yi03783yibin" path="res://Minigame/BreathingMinigame/visual_node.gd" id="2_qlixe"]
+[ext_resource type="Texture2D" uid="uid://c3m7clr344bit" path="res://assets/Minigames/BreathingMinigame/respirazione quadrata.png" id="3_01sfd"]
+[ext_resource type="Texture2D" uid="uid://f8lk7gsoif3m" path="res://assets/Minigames/BreathingMinigame/cursore.png" id="4_ip30v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6clho"]
+atlas = ExtResource("2_f4t0g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xmby"]
+atlas = ExtResource("2_f4t0g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfk6h"]
+atlas = ExtResource("2_f4t0g")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1pqt"]
+atlas = ExtResource("2_f4t0g")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtcvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6clho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xmby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfk6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1pqt")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}]
+
+[node name="BreathingMinigame" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f87hx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(538, 44)
+scale = Vector2(1.59375, 1.59375)
+sprite_frames = SubResource("SpriteFrames_dtcvm")
+animation = &"heart"
+
+[node name="PhaseLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.0
+offset_right = 0.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scena1" type="Node2D" parent="."]
+visible = false
+z_index = 5
+script = ExtResource("2_qlixe")
+
+[node name="Square" type="Sprite2D" parent="Scena1"]
+texture_filter = 1
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("3_01sfd")
+
+[node name="Circle" type="Sprite2D" parent="Scena1"]
+texture_filter = 1
+position = Vector2(-79, 79)
+scale = Vector2(2.04545, 2.04545)
+texture = ExtResource("4_ip30v")
+
+[node name="Timer" type="Timer" parent="."]

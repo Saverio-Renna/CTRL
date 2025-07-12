@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://ijykwyp802ml"]
+
+[ext_resource type="Texture2D" uid="uid://ctbfcnkcn1ivx" path="res://assets/Minigames/HandTracingMinigame/mano.png" id="1_glfo0"]
+[ext_resource type="Script" uid="uid://caeywmghwjr7n" path="res://Minigame/HandTracingMinigame/hand_tracing_minigame.gd" id="1_n5ee2"]
+[ext_resource type="Script" uid="uid://cyyc147ik2fj0" path="res://Minigame/HandTracingMinigame/ball.gd" id="2_n5ee2"]
+[ext_resource type="Texture2D" uid="uid://cuky5u6kvqo00" path="res://assets/Minigames/BreathingMinigame/New Piskel.png" id="3_32h0k"]
+[ext_resource type="Texture2D" uid="uid://d2oyey3kwo3ry" path="res://assets/Minigames/HandTracingMinigame/Senza nome.png" id="4_32h0k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhmhc"]
+atlas = ExtResource("3_32h0k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ekk"]
+atlas = ExtResource("3_32h0k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xqe5"]
+atlas = ExtResource("3_32h0k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cblit"]
+atlas = ExtResource("3_32h0k")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws4l5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhmhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ekk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xqe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cblit")
+}],
+"loop": true,
+"name": &"hert",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4sgr"]
+radius = 1.2216
+
+[node name="HandTracingMinigame" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5ee2")
+
+[node name="LifeIndicator" type="AnimatedSprite2D" parent="."]
+position = Vector2(528.5, 44.5)
+scale = Vector2(1.59375, 1.59375)
+sprite_frames = SubResource("SpriteFrames_ws4l5")
+animation = &"hert"
+
+[node name="HandSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(283, 170)
+scale = Vector2(3, 3)
+texture = ExtResource("1_glfo0")
+
+[node name="HandCollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HandCollisionArea"]
+polygon = PackedVector2Array(263, 270, 218, 218, 156, 174, 158, 169, 175, 165, 185, 169, 226, 198, 229, 201, 237, 202, 248, 201, 255, 195, 261, 186, 267, 172, 266, 150, 251, 48, 252, 40, 259, 40, 264, 52, 280, 141, 285, 144, 294, 144, 299, 139, 300, 133, 294, 25, 299, 23, 304, 23, 307, 26, 309, 33, 314, 141, 319, 145, 324, 144, 329, 143, 332, 140, 332, 44, 335, 40, 340, 38, 343, 42, 344, 57, 345, 158, 350, 162, 358, 162, 365, 159, 392, 90, 398, 86, 403, 89, 404, 98, 401, 107, 378, 163, 375, 173, 376, 181, 376, 188, 376, 200, 375, 206, 373, 219, 362, 253, 351, 278, 341, 292, 338, 295, 331, 295, 319, 289, 297, 279, 285, 275, 269, 274)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HandCollisionArea"]
+polygon = PackedVector2Array(342, 302, 355, 289, 368, 264, 380, 231, 386, 209, 387, 192, 385, 173, 399, 139, 413, 103, 413, 86, 405, 77, 393, 77, 386, 82, 380, 98, 361, 143, 357, 152, 355, 154, 353, 145, 354, 33, 344, 29, 332, 31, 325, 37, 324, 61, 322, 130, 316, 24, 308, 15, 298, 14, 287, 19, 285, 30, 290, 129, 270, 36, 256, 30, 247, 30, 242, 36, 240, 50, 246, 93, 252, 127, 255, 148, 257, 169, 252, 180, 246, 188, 233, 191, 192, 160, 178, 156, 163, 157, 151, 161, 144, 168, 146, 177, 168, 195, 198, 215, 210, 225, 253, 274, 262, 281, 271, 283, 284, 283, 292, 286, 311, 295, 329, 303, 340, 303, 344, 306, 327, 309, 291, 294, 265, 285, 249, 283, 234, 257, 216, 243, 197, 222, 173, 211, 153, 195, 137, 180, 138, 166, 146, 154, 159, 150, 179, 149, 202, 155, 213, 170, 229, 183, 242, 179, 248, 163, 236, 92, 230, 44, 235, 24, 253, 18, 268, 20, 277, 31, 278, 40, 283, 14, 289, 8, 296, 7, 313, 7, 323, 11, 323, 23, 329, 23, 338, 17, 352, 17, 365, 28, 368, 46, 361, 82, 361, 106, 383, 62, 394, 65, 408, 65, 418, 76, 420, 88, 423, 102, 421, 122, 417, 131, 406, 150, 401, 162, 396, 185, 398, 205, 398, 222, 391, 237, 385, 253, 379, 270, 370, 286, 364, 301, 344, 307)
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(340, 297)
+script = ExtResource("2_n5ee2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture_filter = 1
+position = Vector2(-0.375, 0.625)
+scale = Vector2(0.546873, 0.546873)
+texture = ExtResource("4_32h0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(-0.375, 0.625)
+scale = Vector2(1.16666, 1.16666)
+shape = SubResource("CircleShape2D_h4sgr")
+
+[node name="Timer" type="Timer" parent="."]

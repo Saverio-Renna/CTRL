@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b814f5x76mbkq"]
+
+[ext_resource type="Script" uid="uid://btpabt52k52gq" path="res://Minigame/BreathingMinigame/breathing_minigame.gd" id="1_f87hx"]
+[ext_resource type="Script" uid="uid://benm0mig6o7s3" path="res://Minigame/BreathingMinigame/visual_node.gd" id="2_qlixe"]
+
+[node name="BreathingMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f87hx")
+
+[node name="PhaseLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CountdownLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VisualNode" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("2_qlixe")
+
+[node name="Timer" type="Timer" parent="."]
